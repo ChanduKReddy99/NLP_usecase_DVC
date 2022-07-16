@@ -53,7 +53,7 @@ def main(config_path, params_path):
     
     #applying word embedding to test data:
     df_test= get_df(test_data_path)
-    test_words= np.array(df_test.text.str.lower().values.astype('U'))
+    test_words= np.array(df_test.text.str.lower().values.astype('U100'))  # reducing to 100 unicode chars
     test_words_binary_matrix= bag_of_words.transform(test_words)
     test_words_tfidf_matrix= tf_idf.transform(test_words_binary_matrix)
     save_matrix(df_test, test_words_tfidf_matrix, featurized_test_data_path)
