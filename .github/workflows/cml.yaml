@@ -3,26 +3,26 @@ name: nlp-dvc-usecase
 on: [push]
 
 jobs:
-  runs-on: [ubuntu-latest]
-  steps:
-    - uses: actions/checkout@v2
-    - uses: iterative/setup-cml@v1
-    - uses: actions/setup-python@v2
-      with:
-       python-version: '3.7'
-     
-    - name: cml-run
-      env:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        # your ML workflow commands
-        pip install --upgrade pip
-        pip install -r requirements.txt
-        
-        # dvc repro -v (if we have data in our repo, here i dont have data so not running it)
-        echo '# REPORTS ' >> reports.md
-        echo '## Metrics ' >> reports.md
-        cat scores.json  >> reports.md
-        
-        
-        cml-send-comment report.md
+ run:
+   runs-on: [ubuntu-latest]
+   steps:
+      - uses: actions/checkout@v2
+      - uses: iterative/setup-cml@v1
+      - uses: actions/setup-python@v2
+        with:
+         python-version: '3.7'
+
+      - name: cml-run
+        env:
+           repo-token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # your ML workflow commands
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+          # dvc repro -v (if we have data in our repo, here i dont have data so not running it)
+          echo '# REPORTS ' >> reports.md
+          echo '## Metrics ' >> reports.md
+          cat scores.json  >> reports.md
+
+          cml-send-comment report.md
