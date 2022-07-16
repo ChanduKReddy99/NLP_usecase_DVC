@@ -18,7 +18,7 @@ jobs:
           cml runner \
           --cloud=aws \
           --cloud-region=us-east \
-          --cloud-type=t2.micro\
+          --cloud-type=t2.micro \
           --labels=cml-cpu
    
   model-training:
