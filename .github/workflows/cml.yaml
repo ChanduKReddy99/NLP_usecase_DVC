@@ -19,6 +19,8 @@ jobs:
           # your ML workflow commands
           pip install --upgrade pip
           pip install -r requirements.txt
+          
+          dvc repro -v
 
           echo '# REPORTS ' >> reports.md
           echo '## Metrics ' >> reports.md
