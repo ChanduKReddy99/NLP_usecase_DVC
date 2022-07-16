@@ -1,27 +1,26 @@
-name: nlp-dvc-usecase
+name: dvc-nlp-workflow
 
 on: [push]
 
 jobs:
- run:
-   runs-on: [ubuntu-latest]
-   steps:
-      - uses: actions/checkout@v3
-      - uses: iterative/setup-cml@v1
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-        with:
-         python-version: '3.7'
-
-      - name: cml-run
+      - uses: iterative/setup-cml@v1
+        with: 
+          python_version: '3.7'
+      - name: cml_run
         env:
-           REPO-TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # your ML workflow commands
           pip install --upgrade pip
           pip install -r requirements.txt
-
-          echo '# REPORTS ' >> reports.md
-          echo '## Metrics ' >> reports.md
-          cat scores.json  >> reports.md
-
-          cml-send-comment report.md
+       
+          echo '# REPORTS' >> report.md
+          echo '## metrics' >> report.md
+          cat artifacts/report/scores.json >> report.md
+          
+          cml send-comment report.md
