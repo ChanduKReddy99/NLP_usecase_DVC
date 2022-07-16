@@ -13,9 +13,10 @@ STAGE= 'STAGE-FOUR'
 
 logging.basicConfig(
     filename= os.path.join('logs', 'running_logs.log'),
+    level= logging.INFO,
     format='[%(asctime)s: %(levelname)s: %(module)s]: %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S',
-    filemode='a',
+    filemode= 'a'
 )
 
 def main(config_path):
