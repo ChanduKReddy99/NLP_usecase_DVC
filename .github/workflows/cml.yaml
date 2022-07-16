@@ -8,14 +8,14 @@ jobs:
     steps:
       - uses: iterative/setup-cml@v1
       - uses: actions/checkout@v2
-      - name: deploy runner in EC2
+      - name: deploy runner on EC2
         shell: bash
         env:
           REPO_TOKEN: ${{ secrets.DVC_NLP_TOKEN }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          cml-runner \
+          cml runner \
           --cloud=aws \
           --cloud-region=us-east \
           --cloud-type=t2.micro\
@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: "Train my model"
         env:
-          repo_token: ${{ secrets.DVC_NLP_TOKEN }}
+          REPO_TOKEN: ${{ secrets.DVC_NLP_TOKEN }}
         run: |
           # Your ML workflow commands
           pip install --upgrade pip
