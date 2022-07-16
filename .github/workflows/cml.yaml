@@ -6,7 +6,7 @@ jobs:
  run:
    runs-on: [ubuntu-latest]
    steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: iterative/setup-cml@v1
       - uses: actions/setup-python@v2
         with:
@@ -14,7 +14,7 @@ jobs:
 
       - name: cml-run
         env:
-           repo-token: ${{ secrets.GITHUB_TOKEN }}
+           REPO-TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # your ML workflow commands
           pip install --upgrade pip
