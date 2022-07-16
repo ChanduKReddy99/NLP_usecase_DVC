@@ -3,7 +3,7 @@ name: nlp-dvc-usecase
 on: [push]
 
 jobs:
-  run: [ubuntu-latest]
+  runs-on: [ubuntu-latest]
   steps:
     - uses: actions/checkout@v2
     - uses: iterative/setup-cml@v1
