@@ -10,7 +10,7 @@ jobs:
       - uses: iterative/setup-cml@v1
       - uses: actions/setup-python@v2
         with:
-         python-version: '3.7'
+         python_version: '3.7'
 
       - name: cml-run
         env:
@@ -19,6 +19,7 @@ jobs:
           # your ML workflow commands
           pip install --upgrade pip
           pip install -r requirements.txt
+          dvc repro -v
 
           echo '# REPORTS ' >> reports.md
           echo '## Metrics ' >> reports.md
